@@ -86,6 +86,75 @@
                 </div>
             </div>
         </div>
+        <form method="POST" action="{{route('pesanan.store')}}"
+        enctype="multipart/form-data">
+        <div class="">
+      <div class="bg-light rounded h-100 p-4">
+          <form>
+          <div class="row mb-3">
+              <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">No Meja</label>
+                  <div class="col-sm-10">
+                      <input type="text" name="no_meja" id="inputEmail3" 
+                      class="form-control @error('no_meja') is-invalid @enderror">
+                      @error('no_meja')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                      @enderror
+                  </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Metode Pembayaran</label>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="metode_pembayaran" id="cash" value="Cash">
+                        <label class="form-check-label" for="cash">
+                            Cash
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="metode_pembayaran" id="debit" value="Debit">
+                        <label class="form-check-label" for="debit">
+                            Debit
+                        </label>
+                    </div>
+                    @error('metode_pembayaran')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                    @enderror
+                </div>
+                </div>
+              <div class="row mb-3">
+                  <label for="inputPassword3" class="col-sm-2 col-form-label">Tanggal Pesan</label>
+                  <div class="col-sm-10">
+                      <input type="date" name="tgl_pesan" id="inputPassword3" 
+                      class="form-control @error('tgl_pesan') is-invalid @enderror">
+                      @error('tgl_pesan')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                      @enderror
+                  </div>
+              </div>
+              <div class="row mb-3">
+                  <label for="inputPassword3" class="col-sm-2 col-form-label">Jam Pesan</label>
+                  <div class="col-sm-10">
+                      <input type="time" name="jam_pesan" id="inputPassword3" 
+                      class="form-control @error('jam_pesan') is-invalid @enderror">
+                      @error('jam_pesan')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                      @enderror
+                  </div>
+              </div>
+              <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        </div>
+        </form>
 
         @if($cart && count($cart) > 0)
             <div class="row mt-4">

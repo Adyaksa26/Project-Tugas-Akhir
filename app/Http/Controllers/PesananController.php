@@ -50,7 +50,6 @@ class PesananController extends Controller
             $pesan->nama_menu = null;
         }
     }
-        // return print_r($pesanan);
     // Mengembalikan view dengan data yang telah di-join
     return view('admin.pesanan.index', compact('pesanan'));
 }
@@ -107,7 +106,7 @@ class PesananController extends Controller
             'tgl_pesan'=>$request->tgl_pesan,
             'jam_pesan'=>$request->jam_pesan,
             'foto'=>$fileName,
-            'menu_id'=>'["0000000023"]',
+            'menu_id'=>json_encode($request->menu_ids),
             'jenis_pesanan_id'=>$request->jenis_pesanan_id,
             'deskripsi'=>$request->deskripsi,
         ]);
@@ -127,7 +126,7 @@ class PesananController extends Controller
             'menu.nama as menu_nama')
         ->where('pesananpelanggan.id', $id)
         ->get();
-        return view ('admin.pesananpelanggan.detail', compact('pesananpelanggan'));
+        return view ('admin.pesanan.detail', compact('pesanan'));
     }
 
     /**
@@ -139,7 +138,7 @@ class PesananController extends Controller
         $pesanan = DB::table('pesananpelanggan')->where('id', $id)->get();
         $jenis_pesanan = DB::table('jenis_pesanan')->get();
         $menu = DB::table('menu')->get();
-        return view('admin.pesananpelanggan.edit', compact('jenis_pesanan','menu','pesananpelanggan'));
+        return view('admin.pesanan.edit', compact('jenis_pesanan','menu','pesanan'));
     }
 
     /**
@@ -184,7 +183,7 @@ class PesananController extends Controller
     public function destroy(string $id)
     {
         //
-        DB::table('pesanan')->where('id', $id)->delete();
+        DB::table('pesananpelanggan')->where('id', $id)->delete();
         return redirect ('admin/pesanan');
     }
 }

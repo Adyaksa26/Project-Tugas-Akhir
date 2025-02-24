@@ -17,10 +17,8 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <!-- <th>User</th> -->
                                             <th>No Meja</th>
                                             <th>Metode Pembayaran</th>
-                                            <!-- <th>Bukti Pembayaran</th> -->
                                             <th>Tanggal Pesan</th>
                                             <th>Jam Pesan</th>
                                             <th>nama_menu</th>
@@ -31,13 +29,10 @@
                                     <tbody>
                                         @php $no=1 @endphp
                                         @foreach($pesanan as $p)
-                                        {{$p}}
                                         <tr>
                                             <th>{{$loop->iteration}}</th>
-                                            <!-- <td>{{$p->User_id}}</td> -->
                                             <td>{{$p->no_meja}}</td>
                                             <td>{{$p->metode_pembayaran}}</td>
-                                            <!-- <td>{{$p->bukti_pembayaran}}</td> -->
                                             <td>{{$p->tgl_pesan}}</td>
                                             <td>{{$p->jam_pesan}}</td>
                                             <td>{{$p->nama_menu}}</td>
